@@ -1,4 +1,4 @@
-# VALUE ITERATION ALGORITHM
+# EX-04 - VALUE ITERATION ALGORITHM
 ## AIM
 To develop a Python program to find the optimal policy for the given MDP using the value iteration algorithm.
 
@@ -24,7 +24,6 @@ The agent can take 4 actions in each state:
 The environment is stochastic, meaning that the outcome of an action is not always certain.
 - *33.33%* chance of moving in the intended direction.
 - *66.66%* chance of moving in a orthogonal directions.
-
 This uncertainty adds complexity to the agent's navigation.
 
 ### Rewards
@@ -41,7 +40,6 @@ The episode terminates when the agent reaches the goal state (G) or falls into a
  - Value iteration is a method of computing an optimal MDP policy and its value.
  - It begins with an initial guess for the value function, and iteratively updates it towards the optimal value function, according to the Bellman optimality equation. 
   - The algorithm is guaranteed to converge to the optimal value function, and in the process of doing so, also converges to the optimal policy.
-
 
 #### The algorithm is as follows:
 1. Initialize the value function V(s) arbitrarily for all states s.
@@ -62,8 +60,7 @@ The episode terminates when the agent reaches the goal state (G) or falls into a
 ```python
 def value_iteration(P, gamma=1.0, theta=1e-10):
     # Initialize the value function V as an array of zeros
-    V = np.zeros(len(P), dtype=np.float64)
-    
+    V = np.zeros(len(P), dtype=np.float64) 
     while True:
         # Initialize the action-value function Q as an array of zeros
         Q = np.zeros((len(P), len(P[0])), dtype=np.float64)
@@ -76,8 +73,7 @@ def value_iteration(P, gamma=1.0, theta=1e-10):
         
         # Check if the maximum difference between Old V and new V is less than theta.
         if np.max(np.abs(V - np.max(Q, axis=1))) < theta:
-            break
-        
+            breaK        
         # Update the value function V with the maximum action-value from Q
         V = np.max(Q, axis=1)
 
@@ -97,7 +93,6 @@ print('Reaches goal {:.2f}%. Obtains an average undiscounted return of {:.4f}.'.
 # printing the state value function
 print_state_value_function(V_best_v, P, prec=4)
 ```
-
 ## OUTPUT:
 ![img](2.png)
 
